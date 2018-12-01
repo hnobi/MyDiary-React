@@ -1,24 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { LOGIN_SAVE_INPUT } from "../redux/constant/actionTypes";
-import { userLogin } from "../redux/actions/login";
-import Alert from "./Notification";
-import "../assets/css/main.css";
-import "../assets/css/form.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { LOGIN_SAVE_INPUT } from '../redux/constant/actionTypes';
+import userLogin from '../redux/actions/login';
+import Alert from './Notification';
+import '../assets/css/main.css';
+import '../assets/css/form.css';
 
 class LoginForm extends Component {
   render() {
-    let { saveInput, handleUserLogin, history } = this.props;
+    const { saveInput, handleUserLogin, history } = this.props;
     const { username, password } = this.props.loginData.input;
     const loginInput = this.props.loginData.input;
-    const { loading , message, status } = this.props.loginData;
-    const statusClassName = loading ? "loading" : "";
+    const { loading, message, status } = this.props.loginData;
+    const statusClassName = loading ? 'loading' : '';
+    console.log('ssss', userLogin);
 
     return (
       <div>
         <main>
-        {loading === false && <Alert message={message} status={status}/>}
+          {loading === false && <Alert message={message} status={status} />}
           <div id="after-click">
             <h3>Invalid username or password</h3>
           </div>
@@ -26,7 +28,7 @@ class LoginForm extends Component {
           <div className="Sign-in-out">
             <form
               id="signin"
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 handleUserLogin(loginInput, history);
               }}
@@ -55,35 +57,38 @@ class LoginForm extends Component {
               <input type="submit" value="Login" className={statusClassName} />
             </form>
             <p>
-              don't have an Account ? <Link to="/signup">Sign up</Link>
+              dont have an Account ? <Link to="/signup"> Sign up</Link>{' '}
             </p>
             <div className="push" />
           </div>
-          <p className="footer">
-            copyright © 2018. MyDiary @ Andela. Hammed Noibi.
-          </p>
+          <p className="footer">copyright © 2018. MyDiary @ Andela. Hammed Noibi.</p>
         </main>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    loginData: state.loginData
-  };
+LoginForm.propTypes = {
+  saveInput: PropTypes.func,
+  handleUserLogin: PropTypes.func,
+  username: PropTypes.string,
+  password: PropTypes.string,
+  history: PropTypes.any,
+  loginData: PropTypes.object
 };
-const mapDispatchToProps = dispatch => {
-  return {
-    saveInput: (field, value) => {
-      dispatch({
-        type: LOGIN_SAVE_INPUT,
-        payload: { field, value }
-      });
-    },
-    handleUserLogin: (data, history) => dispatch(userLogin(data, history))
-  };
-};
+
+const mapStateToProps = state => ({
+  loginData: state.loginData
+});
+const mapDispatchToProps = dispatch => ({
+  saveInput: (field, value) => {
+    dispatch({
+      type: LOGIN_SAVE_INPUT,
+      payload: { field, value }
+    });
+  },
+  handleUserLogin: (data, history) => dispatch(userLogin(data, history))
+});
 
 export default connect(
   mapStateToProps,

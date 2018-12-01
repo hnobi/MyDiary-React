@@ -1,10 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-// import './myStyles.scss';;
 
-const Home = () => {
-  return (
+const Home = () => (
     <div className="app">
           <img alt="header" src="/dist/images/a.png" className="app-header" />
 
@@ -15,6 +12,5 @@ const Home = () => {
       </p>
       <p>- Captain Kirk</p>
     </div>
-  );
-};
-export default Home
+);
+export default Home;
