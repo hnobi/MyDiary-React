@@ -1,1 +1,1 @@
-#mydaiary React
+# My Diary client
