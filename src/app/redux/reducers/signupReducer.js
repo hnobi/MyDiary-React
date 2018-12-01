@@ -20,6 +20,7 @@ const signupReducer = (state = initialState, action) => {
     case SIGNUP_SAVE_INPUT:
       let newState = { ...state };
       let { field, value } = action.payload;
+      
       newState.input[field] = value;
     case SIGNUP_SAVE_INPUT:
 

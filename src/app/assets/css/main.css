@@ -59,6 +59,7 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
+  flex: 1;
 }
 textarea {
   width: 100%;
@@ -92,6 +93,8 @@ input[type="date"] {
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
 }
 input[type="submit"] {
   background-color: #4caf50;
@@ -417,6 +420,18 @@ th {
 .view-button:hover {
   background-color: rgb(2, 26, 2);
   color: #fff;
+}
+
+input,
+button,
+a {
+  outline: none;
+}
+
+input[type="submit"].loading,
+.loading {
+  pointer-events: none;
+  background: gray;
 }
 
 @media screen and (max-width: 1092px) {
