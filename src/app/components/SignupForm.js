@@ -1,22 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { SIGNUP_SAVE_INPUT } from "../redux/constant/actionTypes";
-import { userSignup } from "../redux/actions/signUp";
-import Alert from "./Notification";
-import "../assets/css/main.css";
-import "../assets/css/form.css";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { SIGNUP_SAVE_INPUT } from '../redux/constant/actionTypes';
+import { userSignup } from '../redux/actions/signUp';
+import Alert from './Notification';
+import '../assets/css/main.css';
+import '../assets/css/form.css';
 
 class SignupForm extends Component {
   render() {
-    let { saveInput, handleUserSignup } = this.props;
-    const { fullname, username, email, password } = this.props.signupData.input;
+    const { saveInput, handleUserSignup } = this.props;
+    const {
+      fullname, username, email, password
+    } = this.props.signupData.input;
     const signupInput = this.props.signupData.input;
+
     const { loading, message, status } = this.props.signupData;
-
-    const statusClassName = loading ? "loading" : "";
-  
-
+    const statusClassName = loading ? 'loading' : '';
     return (
       <div>
         <nav>
@@ -24,13 +25,13 @@ class SignupForm extends Component {
             <Link to="/login">Login</Link>
           </div>
         </nav>
-        {loading === false && <Alert message={message} status={status}/>}
+        {loading === false && <Alert message={message} status={status} />}
         <main>
           <h2>Sign up</h2>
           <div className="Sign-in-out">
             <form
               id="signup"
-              onSubmit={e => {
+              onSubmit={(e) => {
                 e.preventDefault();
                 handleUserSignup(signupInput);
               }}
@@ -85,17 +86,13 @@ class SignupForm extends Component {
                 onChange={e => saveInput(e.target.name, e.target.value)}
               />
 
-              <input
-                type="submit"
-                value="Sign up"
-                className={statusClassName}
-              />
+              <input type="submit" value="Sign up" className={statusClassName}/>
             </form>
           </div>
           <div className="push" />
         </main>
         <p className="footer">
-          {" "}
+          {' '}
           copyright © 2018. &nbsp;MyDiary @ Andela.&nbsp; By &nbsp;
           <small>Hammed Noibi.</small>
         </p>
@@ -103,23 +100,25 @@ class SignupForm extends Component {
     );
   }
 }
+SignupForm.propTypes = {
+  saveInput: PropTypes.func,
+  handleUserSignup: PropTypes.func,
+  history: PropTypes.any,
+  signupData: PropTypes.object
+};
 
-const mapStateToProps = state => {
-  return {
-    signupData: state.signupData
-  };
-};
-const mapDispatchToProps = dispatch => {
-  return {
-    saveInput: (field, value) => {
-      dispatch({
-        type: SIGNUP_SAVE_INPUT,
-        payload: { field, value }
-      });
-    },
-    handleUserSignup: data => dispatch(userSignup(data))
-  };
-};
+const mapStateToProps = state => ({
+  signupData: state.signupData
+});
+const mapDispatchToProps = dispatch => ({
+  saveInput: (field, value) => {
+    dispatch({
+      type: SIGNUP_SAVE_INPUT,
+      payload: { field, value }
+    });
+  },
+  handleUserSignup: data => dispatch(userSignup(data))
+});
 
 export default connect(
   mapStateToProps,
