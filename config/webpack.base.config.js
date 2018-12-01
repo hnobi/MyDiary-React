@@ -8,6 +8,7 @@ const APP_DIR = path.resolve(__dirname, "../src");
 
 module.exports = env => {
   const { PLATFORM, VERSION } = env;
+
   return merge([
     {
       entry: ["@babel/polyfill", APP_DIR],
@@ -19,6 +20,19 @@ module.exports = env => {
             use: {
               loader: "babel-loader"
             }
+          },
+          {
+            test: /\.css$/,
+            use: ["style-loader", "css-loader"]
+          },
+          {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+              {
+                loader: "file-loader",
+                options: {}
+              }
+            ]
           },
           {
             test: /\.scss$/,
