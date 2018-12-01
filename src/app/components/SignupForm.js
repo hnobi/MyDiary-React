@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Redirect } from 'react-router-dom';
-
 import { SIGNUP_SAVE_INPUT } from "../redux/constant/actionTypes";
 import { userSignup } from "../redux/actions/signUp";
-
 import Alert from "./Notification";
 import "../assets/css/main.css";
 import "../assets/css/form.css";
@@ -28,13 +25,6 @@ class SignupForm extends Component {
           </div>
         </nav>
         {loading === false && <Alert message={message} status={status}/>}
-      
-      }, 500);
-    }
-
-        <div id="after-click">
-          <h3>User already have my diary account</h3>
-        </div>
         <main>
           <h2>Sign up</h2>
           <div className="Sign-in-out">

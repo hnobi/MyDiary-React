@@ -11,10 +11,8 @@ const userSignup = data => dispatch => {
   });
   signUpRequest(data)
     .then(response => {
-      console.log('sss',response.data)
       dispatch({
         type: USER_SIGNUP_SUCCESS,
-        // payload: {response:{data}, status:'success'}
         payload: response.data
       })
     })

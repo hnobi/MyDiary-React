@@ -11,5 +11,10 @@ const signUpRequest = data => {
     password: data.password
   });
 };
-
-export { signUpRequest };
+const loginRequest = data => {
+  return axios.post(base_url + "/auth/signin", {
+    username: data.username,
+    password: data.password
+  });
+};
+export { signUpRequest,loginRequest };

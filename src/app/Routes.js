@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import "./assets/css/root.css";
-import home from './components/home'
+import home from "./components/home";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import SignupForm from "./components/SignupForm";
-
+import LoginForm from "./components/LoginForm";
 
 export default class Routes extends Component {
   render() {
@@ -12,7 +11,7 @@ export default class Routes extends Component {
         <Switch>
           <Route exact path="/" component={home} />
           <Route exact path="/signup" component={SignupForm} />
-
+          <Route exact path="/login" component={LoginForm} />
         </Switch>
       </BrowserRouter>
     );
