@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import { signUpRequest } from '../../services/apiRequest';
 import {
   USER_SIGNUP_SUCCESS,
@@ -23,7 +25,6 @@ const userSignup = data => (dispatch) => {
       } else {
         message = 'An unexpected error occured. please check your internet connection and try again';
       }
-
       dispatch({
         type: USER_SIGNUP_FAILURE,
         payload: message,
@@ -32,4 +33,4 @@ const userSignup = data => (dispatch) => {
     });
 };
 
-export default userSignup;
+export { userSignup };

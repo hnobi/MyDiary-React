@@ -15,7 +15,6 @@ class LoginForm extends Component {
     const loginInput = this.props.loginData.input;
     const { loading, message, status } = this.props.loginData;
     const statusClassName = loading ? 'loading' : '';
-    console.log('ssss', userLogin);
 
     return (
       <div>

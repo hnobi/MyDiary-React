@@ -14,23 +14,29 @@ const initialState = {
 };
 
 const loginReducer = (state = initialState, action) => {
-  const newState = { ...state };
   switch (action.type) {
-    // eslint-disable-no-case-declarations
     case LOGIN_SAVE_INPUT: {
+      const newState = { ...state };
       const { field, value } = action.payload;
-      newState[field] = value;
+      newState.input[field] = value;
       return newState;
     }
     case USER_LOGIN_REQUEST:
       return { ...state, loading: true };
     case USER_LOGIN_SUCCESS:
       return {
-        ...state, loading: false, token: action.payload.token, status: 'success'
+        ...state,
+        loading: false,
+        token: action.payload.token,
+        message: action.payload.message,
+        status: 'success'
       };
     case USER_LOGIN_FAILURE:
       return {
-        ...state, loading: false, message: action.payload, status: 'error'
+        ...state,
+        loading: false,
+        message: action.payload,
+        status: 'error'
       };
     default:
       return state;

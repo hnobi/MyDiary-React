@@ -11,20 +11,15 @@ class Alert extends React.Component {
   render() {
     return (
       <div>
-        <ToastContainer
-          store={ToastStore}
-          position={ToastContainer.POSITION.TOP_CENTER}
-        />
+        <ToastContainer store={ToastStore} position={ToastContainer.POSITION.TOP_CENTER} />
       </div>
     );
   }
 }
 
-
 Alert.propTypes = {
   status: PropTypes.string,
-  message: PropTypes.string,
-
+  message: PropTypes.string
 };
 
 export default Alert;

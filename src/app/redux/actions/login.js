@@ -5,7 +5,7 @@ import {
   USER_LOGIN_REQUEST
 } from '../constant/actionTypes';
 
-const userLogin = data => (dispatch) => {
+const userLogin = (data, history) => (dispatch) => {
   dispatch({
     type: USER_LOGIN_REQUEST
   });
@@ -15,9 +15,8 @@ const userLogin = data => (dispatch) => {
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
-      console.log('res', response);
       localStorage.setItem('Token', response.data.token);
-      // history.push('/add-entry');
+      history.push('/add-entry');
     })
     .catch((error) => {
       let message;

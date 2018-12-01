@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { SIGNUP_SAVE_INPUT } from '../redux/constant/actionTypes';
-import userSignup from '../redux/actions/signUp';
+import { userSignup } from '../redux/actions/signUp';
 import Alert from './Notification';
 import '../assets/css/main.css';
 import '../assets/css/form.css';
@@ -15,9 +15,9 @@ class SignupForm extends Component {
       fullname, username, email, password
     } = this.props.signupData.input;
     const signupInput = this.props.signupData.input;
+
     const { loading, message, status } = this.props.signupData;
     const statusClassName = loading ? 'loading' : '';
-    console.log('con', handleUserSignup);
     return (
       <div>
         <nav>
@@ -86,7 +86,7 @@ class SignupForm extends Component {
                 onChange={e => saveInput(e.target.name, e.target.value)}
               />
 
-              <input type="submit" value="Sign up" className={statusClassName} />
+              <input type="submit" value="Sign up" className={statusClassName}/>
             </form>
           </div>
           <div className="push" />
