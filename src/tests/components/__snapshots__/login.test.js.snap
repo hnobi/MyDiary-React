@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders LoginForm component without crashing 1`] = `
+<div>
+  <main>
+    <div
+      id="after-click"
+    >
+      <h3>
+        Invalid username or password
+      </h3>
+    </div>
+    <h2>
+      Sign in
+    </h2>
+    <div
+      className="Sign-in-out"
+    >
+      <form
+        id="signin"
+        onSubmit={[Function]}
+      >
+        <label
+          htmlFor="username"
+        >
+          Username
+        </label>
+        <input
+          defaultValue="hnobi"
+          id="username"
+          name="username"
+          onChange={[Function]}
+          placeholder="username"
+          required={true}
+          type="text"
+        />
+        <label
+          htmlFor="password"
+        >
+          Password
+        </label>
+        <input
+          defaultValue="Hnonie23"
+          id="password"
+          name="password"
+          onChange={[Function]}
+          placeholder="secret password"
+          required={true}
+          type="password"
+        />
+        <input
+          className=""
+          type="submit"
+          value="Login"
+        />
+      </form>
+      <p>
+        dont have an Account ? 
+        <Link
+          replace={false}
+          to="/signup"
+        >
+           Sign up
+        </Link>
+         
+      </p>
+      <div
+        className="push"
+      />
+    </div>
+    <p
+      className="footer"
+    >
+      copyright © 2018. MyDiary @ Andela. Hammed Noibi.
+    </p>
+  </main>
+</div>
+`;
