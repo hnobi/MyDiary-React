@@ -6,7 +6,6 @@ import {
 } from '../constant/actionTypes';
 import { saveAuthToken } from '../../services/AuthToken';
 
-
 const userLogin = data => (dispatch) => {
   dispatch({
     type: USER_LOGIN_REQUEST
@@ -17,6 +16,7 @@ const userLogin = data => (dispatch) => {
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
+
       saveAuthToken(response.data.token);
     })
     .catch((error) => {
