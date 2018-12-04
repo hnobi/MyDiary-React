@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Signupnt without crashing 1`] = `
+<div>
+  <nav>
+    <div
+      id="logo"
+    >
+      <Link
+        replace={false}
+        to="/login"
+      >
+        Login
+      </Link>
+    </div>
+  </nav>
+  <main>
+    <h2>
+      Sign up
+    </h2>
+    <div
+      className="Sign-in-out"
+    >
+      <form
+        id="signup"
+        onSubmit={[Function]}
+      >
+        <p>
+          Already have an Account ?
+          <Link
+            replace={false}
+            to="/login"
+          >
+            Sign in
+          </Link>
+        </p>
+        <label
+          htmlFor="fullname"
+        >
+          Fullname
+        </label>
+        <input
+          defaultValue="hammede"
+          id="fullname"
+          name="fullname"
+          onChange={[Function]}
+          placeholder="Your fullname..."
+          required={true}
+          type="text"
+        />
+        <label
+          htmlFor="email"
+        >
+          Email
+        </label>
+        <input
+          defaultValue="ass@jwjjw.com"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Email address..."
+          required={true}
+          type="email"
+        />
+        <label
+          htmlFor="username"
+        >
+          Username
+        </label>
+        <input
+          defaultValue="hnobi"
+          id="username"
+          name="username"
+          onChange={[Function]}
+          pattern="^[(A-Za-z)|0-9].{1,15}$"
+          placeholder=" username..."
+          required={true}
+          title="Username may only contain letters or numbers and must be between 2 and 15 characters"
+          type="text"
+        />
+        <label
+          htmlFor="country"
+        >
+          Password
+        </label>
+        <input
+          defaultValue="Hnonie23"
+          id="password"
+          name="password"
+          onChange={[Function]}
+          pattern="^((?=.*[0-9])(?=.*[a-zA-Z])).{8,12}$"
+          placeholder="password"
+          required={true}
+          title="Password must contain atleast one number and one letter and must be between 8 to 12 characters "
+          type="password"
+        />
+        <input
+          className=""
+          type="submit"
+          value="Sign up"
+        />
+      </form>
+    </div>
+    <div
+      className="push"
+    />
+  </main>
+  <p
+    className="footer"
+  >
+     
+    copyright © 2018.  MyDiary @ Andela.  By  
+    <small>
+      Hammed Noibi.
+    </small>
+  </p>
+</div>
+`;

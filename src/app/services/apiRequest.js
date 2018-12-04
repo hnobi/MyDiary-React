@@ -1,7 +1,6 @@
 import axios from 'axios';
-// import dotenv from 'dotenv'
-//  dotenv.config()
-const baseUrl = 'https://your-diary.herokuapp.com/api/v1';
+
+const baseUrl = process.env.BASE_URL;
 
 const signUpRequest = data => axios.post(`${baseUrl}/auth/signup`, {
   fullname: data.fullname,

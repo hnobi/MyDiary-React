@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { LOGIN_SAVE_INPUT } from '../redux/constant/actionTypes';
 import userLogin from '../redux/actions/login';
-import Alert from './Notification';
+import Alert from './Alert';
 import '../assets/css/main.css';
 import '../assets/css/form.css';
 
-class LoginForm extends Component {
+export class LoginForm extends Component {
   render() {
     const { saveInput, handleUserLogin, history } = this.props;
     const { username, password } = this.props.loginData.input;
@@ -16,6 +16,11 @@ class LoginForm extends Component {
     const { loading, message, status } = this.props.loginData;
     const statusClassName = loading ? 'loading' : '';
 
+    if (status === 'success') {
+      setTimeout(() => {
+        history.push('/add-entry');
+      }, 500);
+    }
     return (
       <div>
         <main>
@@ -29,7 +34,7 @@ class LoginForm extends Component {
               id="signin"
               onSubmit={(e) => {
                 e.preventDefault();
-                handleUserLogin(loginInput, history);
+                handleUserLogin(loginInput);
               }}
             >
               <label htmlFor="username">Username</label>
