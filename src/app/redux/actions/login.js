@@ -4,6 +4,7 @@ import {
   USER_LOGIN_FAILURE,
   USER_LOGIN_REQUEST
 } from '../constant/actionTypes';
+import { saveAuthToken } from '../../services/AuthToken';
 
 const userLogin = data => (dispatch) => {
   dispatch({
@@ -15,7 +16,8 @@ const userLogin = data => (dispatch) => {
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
-      localStorage.setItem('Token', response.data.token);
+
+      saveAuthToken(response.data.token);
     })
     .catch((error) => {
       let message;

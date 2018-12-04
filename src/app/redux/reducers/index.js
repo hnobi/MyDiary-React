@@ -6,5 +6,4 @@ import loginReducer from './loginReducer';
 export default combineReducers({
   signupData: signupReducer,
   loginData: loginReducer,
-
 });
