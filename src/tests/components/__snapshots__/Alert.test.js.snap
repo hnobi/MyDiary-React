@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Alert component without crashing 1`] = `
+<div>
+  <Container
+    position="top_center"
+    store={
+      Object {
+        "data": Object {
+          "classNames": undefined,
+          "message": "",
+          "status": "success",
+          "timer": undefined,
+        },
+        "error": [Function],
+        "info": [Function],
+        "success": [Function],
+        "unwatch": [Function],
+        "warning": [Function],
+        "watch": [Function],
+      }
+    }
+  />
+</div>
+`;
