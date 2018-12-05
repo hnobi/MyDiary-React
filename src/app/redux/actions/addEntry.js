@@ -16,6 +16,7 @@ const newEntry = data => (dispatch) => {
         type: NEW_ENTRY_SUCCESS,
         payload: response.data
       });
+      // eslint-disable-next-line no-restricted-globals
     })
     .catch((error) => {
       let message;

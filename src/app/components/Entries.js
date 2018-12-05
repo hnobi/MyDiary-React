@@ -64,6 +64,9 @@ class Entries extends Component {
               <li>
                 <Link to="/entries">View Entries</Link>
               </li>
+              <li>
+                <Link to="/add-entry">Add Entry</Link>
+              </li>
               <li id="logout">
                 <Link to="/logout">Logout</Link>
               </li>
