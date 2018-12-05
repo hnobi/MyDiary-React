@@ -12,7 +12,7 @@ body {
 }
 .body-image {
   background: url("./../img/bg.jpg") bottom;
-  height: 100vh;
+  height: 100%;
   background-size: cover;
 }
 .container {
@@ -59,7 +59,6 @@ form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1;
 }
 textarea {
   width: 100%;
@@ -93,8 +92,6 @@ input[type="date"] {
   box-sizing: border-box;
   margin-top: 6px;
   margin-bottom: 16px;
-  -webkit-appearance: textfield;
-  -moz-appearance: textfield;
 }
 input[type="submit"] {
   background-color: #4caf50;
@@ -274,7 +271,7 @@ search-entry-title {
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin-top: 0px;
+  margin-top: ;
   background-color: #212121;
   height: 30px;
   padding-top: 50px;
@@ -319,7 +316,9 @@ button {
   height: 40px;
   margin: 10px auto;
 }
-
+.banner {
+  height: 100%;
+}
 .submit-btn {
   width: 150px;
   height: 40px;
@@ -422,18 +421,6 @@ th {
   color: #fff;
 }
 
-input,
-button,
-a {
-  outline: none;
-}
-
-input[type="submit"].loading,
-.loading {
-  pointer-events: none;
-  background: gray;
-}
-
 @media screen and (max-width: 1092px) {
   .search-entry-title {
     display: flex;
@@ -533,4 +520,3 @@ input[type="submit"].loading,
 }
 
 /*  */
-  
