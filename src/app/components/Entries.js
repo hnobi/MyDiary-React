@@ -32,7 +32,6 @@ class Entries extends Component {
 
   render() {
     const { entries } = this.props;
-
     const entriesList = entries.map((item, index) => (
       <tr key={index}>
         <td>{item.id}</td>
@@ -50,7 +49,6 @@ class Entries extends Component {
         </td>
       </tr>
     ));
-
     return (
       <div>
         <nav className="navcolor">
@@ -110,7 +108,7 @@ Entries.propTypes = {
   entries: PropTypes.array,
   fetchUserEntries: PropTypes.func,
   openSingleEntry: PropTypes.any,
-  history: PropTypes.func
+  history: PropTypes.object
 };
 const mapStateToProps = state => ({
   entries: state.entries
@@ -120,8 +118,7 @@ const mapDispatchToProps = dispatch => ({
     type: 'SET_ACTIVE_VIEW_ENTRY',
     payload: entryId
   }),
-  fetchUserEntries: () => dispatch(fetchEntries()),
-  dispatch
+  fetchUserEntries: () => dispatch(fetchEntries())
 });
 
 export default connect(

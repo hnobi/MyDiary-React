@@ -4,11 +4,13 @@ import loginReducer from './loginReducer';
 import newEntryReducer from './newEntryReducer';
 import authenticatedUserReducer from './authenticatedUserReducer';
 import entriesReducer from './entriesReducer';
+import selectedEntryReducer from './selectedEntryReducer';
 
 export default combineReducers({
   signupData: signupReducer,
   loginData: loginReducer,
   newEntryData: newEntryReducer,
   authenticatedUser: authenticatedUserReducer,
-  entries: entriesReducer
+  entries: entriesReducer,
+  selectedEntry: selectedEntryReducer
 });

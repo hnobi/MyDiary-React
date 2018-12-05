@@ -10,6 +10,12 @@ const newEntryRequest = data => axios.post(`${baseUrl}/entries?token=${data.toke
 
 const fetchEntriesRequest = data => axios.get(`${baseUrl}/entries?token=${data.token}`);
 
+const fetchEntryRequest = data => axios.get(`${baseUrl}/entries/${data.entryId}?token=${data.token}`);
+
 export {
-  signUpRequest, loginRequest, newEntryRequest, fetchEntriesRequest
+  signUpRequest,
+  loginRequest,
+  newEntryRequest,
+  fetchEntriesRequest,
+  fetchEntryRequest
 };
