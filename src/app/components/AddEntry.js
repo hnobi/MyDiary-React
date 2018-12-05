@@ -1,7 +1,7 @@
 /* eslint camelcase: ["error", {allow: ["UNSAFE_componentWillMount"]}] */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NEW_ENTRY_SAVE_INPUT } from '../redux/constant/actionTypes';
 import newEntry from '../redux/actions/addEntry';
@@ -10,8 +10,6 @@ import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class AddEntry extends Component {
-  x;
-
   UNSAFE_componentWillMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
@@ -21,12 +19,16 @@ class AddEntry extends Component {
   }
 
   render() {
-    const { saveInput, handleAddEntry } = this.props;
+    const { saveInput, handleAddEntry, history } = this.props;
     const { title, entry, date } = this.props.newEntryData.input;
     const newEntryInput = this.props.newEntryData.input;
     const { loading, message, status } = this.props.newEntryData;
     const statusClassName = loading ? 'loading' : '';
-
+    if (status === 'success') {
+      setTimeout(() => {
+        history.replace('/entries');
+      }, 500);
+    }
     return (
       <div>
         <nav className="navcolor">
@@ -43,7 +45,7 @@ class AddEntry extends Component {
                 <Link to="/entries">View Entries</Link>
               </li>
               <li id="logout">
-                <Link to="/logout">Logout</Link>
+                <Link to="/logout">Logout</Link>xas
               </li>
             </ul>
           </div>
@@ -61,6 +63,7 @@ class AddEntry extends Component {
           </Link>
         </nav>
         {loading === false && <Alert message={message} status={status} />}
+        {message === 'success' && <Redirect to="/entries" />}
         <section>
           <h2 className="heading">Add Entry</h2>
           <div className="container">

@@ -48,7 +48,7 @@ class EditEntry extends Component {
           </div>
           <div style={{ margin: 'auto' }} />
           <div className="menu">
-            <ul>
+            <ul>c
               <li>
                 <Link to="/entries">View Entries</Link>
               </li>

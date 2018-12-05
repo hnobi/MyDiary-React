@@ -7,9 +7,9 @@ import {
 
 const initialState = {
   input: {
-    fullname: 'test',
-    email: 'test@g.com',
-    username: 'test',
+    fullname: '',
+    email: '',
+    username: '',
   },
   token: ''
 };
