@@ -19,7 +19,6 @@ class SingleEntry extends Component {
   componentDidMount() {
     const { fetchSingleEntry, match } = this.props;
     const { entryId } = match.params;
-
     const authToken = getAuthToken();
     if (authToken) {
       fetchSingleEntry(entryId);

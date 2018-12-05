@@ -19,14 +19,21 @@ const updateEntryReducer = (state = initialState, action) => {
     }
     case UPDATE_ENTRY_REQUEST:
       return { ...state, loading: true };
+
     case UPDATE_ENTRY_SUCCESS:
       return {
-        ...state, loading: false, message: action.payload, status: 'success'
+        ...state,
+        loading: false,
+        message: action.payload,
+        status: 'success'
       };
 
     case UPDATE_ENTRY_FAILURE:
       return {
-        ...state, loading: false, message: action.payload, status: 'error'
+        ...state,
+        loading: false,
+        message: action.payload,
+        status: 'error'
       };
     default:
       return state;
