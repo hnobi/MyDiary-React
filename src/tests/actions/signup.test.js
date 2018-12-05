@@ -2,21 +2,20 @@ import axios from 'axios';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import MockAdapter from 'axios-mock-adapter';
-import dotenv from 'dotenv';
 import userSignup from '../../app/redux/actions/signUp';
 import {
   USER_SIGNUP_FAILURE,
   USER_SIGNUP_REQUEST,
   USER_SIGNUP_SUCCESS
 } from '../../app/redux/constant/actionTypes';
+import { BaseUrl } from '../../constant';
 
-dotenv.config();
-const baseUrl = process.env.BASE_URL;
+const baseUrl = BaseUrl.herokulink;
+
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 const mock = new MockAdapter(axios);
-// const baseUrl = 'https://your-diary.herokuapp.com/api/v1';
 
 describe('Auth actions', () => {
   afterEach(() => {
