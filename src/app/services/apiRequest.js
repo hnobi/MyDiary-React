@@ -1,6 +1,8 @@
 import axios from 'axios';
+// eslint-disable-next-line import/named
+import { BaseUrl } from '../../constant';
 
-const baseUrl = 'https://your-diary.herokuapp.com/api/v1';
+const baseUrl = BaseUrl.herokulink;
 
 const signUpRequest = data => axios.post(`${baseUrl}/auth/signup`, data);
 

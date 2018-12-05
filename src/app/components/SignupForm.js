@@ -10,7 +10,7 @@ import '../assets/css/form.css';
 
 export class SignupForm extends Component {
   render() {
-    const { saveInput, handleUserSignup } = this.props;
+    const { saveInput, handleUserSignup, history } = this.props;
     const {
       fullname, username, email, password
     } = this.props.signupData.input;
@@ -18,6 +18,11 @@ export class SignupForm extends Component {
 
     const { loading, message, status } = this.props.signupData;
     const statusClassName = loading ? 'loading' : '';
+    if (status === 'success') {
+      setTimeout(() => {
+        history.push('/login');
+      }, 500);
+    }
     return (
       <div>
         <nav>
@@ -103,7 +108,8 @@ export class SignupForm extends Component {
 SignupForm.propTypes = {
   saveInput: PropTypes.func,
   handleUserSignup: PropTypes.func,
-  signupData: PropTypes.object
+  signupData: PropTypes.object,
+  history: PropTypes.object
 };
 
 const mapStateToProps = state => ({
