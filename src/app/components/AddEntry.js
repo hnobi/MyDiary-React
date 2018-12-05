@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { NEW_ENTRY_SAVE_INPUT } from '../redux/constant/actionTypes';
-import { newEntry } from '../redux/actions/entries';
+import newEntry from '../redux/actions/addEntry';
 import Alert from './Alert';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class AddEntry extends Component {
+  x;
+
   UNSAFE_componentWillMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
