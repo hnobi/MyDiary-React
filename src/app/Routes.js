@@ -4,6 +4,7 @@ import home from './components/home';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import AddEntry from './components/AddEntry';
+import Entries from './components/Entries';
 
 export default class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class Routes extends Component {
           <Route exact path="/signup" component={SignupForm} />
           <Route exact path="/login" component={LoginForm} />
           <Route exact path="/add-entry" component={AddEntry} />
+          <Route exact path="/entries" component={Entries} />
         </Switch>
       </BrowserRouter>
     );

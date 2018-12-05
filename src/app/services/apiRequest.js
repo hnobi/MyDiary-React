@@ -8,4 +8,8 @@ const loginRequest = data => axios.post(`${baseUrl}/auth/signin`, data);
 
 const newEntryRequest = data => axios.post(`${baseUrl}/entries?token=${data.token}`, data);
 
-export { signUpRequest, loginRequest, newEntryRequest };
+const fetchEntriesRequest = data => axios.get(`${baseUrl}/entries?token=${data.token}`);
+
+export {
+  signUpRequest, loginRequest, newEntryRequest, fetchEntriesRequest
+};
