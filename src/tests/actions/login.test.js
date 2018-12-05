@@ -9,11 +9,13 @@ import {
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS
 } from '../../app/redux/constant/actionTypes';
+import { BaseUrl } from '../../constant';
+
+const baseUrl = BaseUrl.herokulink;
 
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 const mock = new MockAdapter(axios);
-const baseUrl = 'https://your-diary.herokuapp.com/api/v1';
 
 describe('Auth actions', () => {
   const data = {

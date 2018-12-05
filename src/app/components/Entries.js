@@ -34,11 +34,12 @@ class Entries extends Component {
     const { entries } = this.props;
     const entriesList = entries.map((item, index) => (
       <tr key={index}>
-        <td>{item.id}</td>
+        <td>{index + 1}</td>
         <td>{item.date}</td>
         <td>{item.title}</td>
         <td>
-          {item.entry.split(' ')[0]} {item.entry.split(' ')[1]} ...
+          {/* {item.entry.split(' ')[0]} {item.entry.split(' ')[1]} ... */}
+          {item.entry}
         </td>
         <td>
           <a>
@@ -63,6 +64,9 @@ class Entries extends Component {
             <ul>
               <li>
                 <Link to="/entries">View Entries</Link>
+              </li>
+              <li>
+                <Link to="/add-entry">Add Entry</Link>
               </li>
               <li id="logout">
                 <Link to="/logout">Logout</Link>
