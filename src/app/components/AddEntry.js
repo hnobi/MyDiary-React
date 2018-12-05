@@ -116,7 +116,7 @@ AddEntry.propTypes = {
   saveInput: PropTypes.func,
   handleAddEntry: PropTypes.func,
   newEntryData: PropTypes.object,
-  history: PropTypes.any
+  history: PropTypes.object
 };
 
 const mapStateToProps = state => ({
