@@ -25,6 +25,11 @@ body {
   width: 70%;
   margin: 20px auto;
 }
+input[type="submit"].loading,
+.loading {
+  pointer-events: none;
+  background: gray;
+}
 .view-entry {
   width: 90%;
 
