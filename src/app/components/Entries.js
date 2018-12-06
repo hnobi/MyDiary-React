@@ -7,20 +7,13 @@ import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class Entries extends Component {
-  // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
+  componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
     if (!authToken) {
       history.replace('/login');
-    }
-  }
-
-  componentDidMount() {
-    const { fetchUserEntries, entries } = this.props;
-    const authToken = getAuthToken();
-
-    if (entries.length === 0 && authToken) {
+    } else {
+      const { fetchUserEntries } = this.props;
       fetchUserEntries();
     }
   }
@@ -32,13 +25,14 @@ class Entries extends Component {
 
   render() {
     const { entries } = this.props;
+    console.log('#$%$', entries);
+    const noEntries = 'There are no entries available';
     const entriesList = entries.map((item, index) => (
       <tr key={index}>
         <td>{index + 1}</td>
         <td>{item.date}</td>
         <td>{item.title}</td>
         <td>
-          {/* {item.entry.split(' ')[0]} {item.entry.split(' ')[1]} ... */}
           {item.entry}
         </td>
         <td>
@@ -88,18 +82,22 @@ class Entries extends Component {
         </nav>
         <section>
           <h2 className="heading">My Entries</h2>
-          <table id="entries-table">
-            <thead>
-              <tr>
-                <th>Id</th>
-                <th>Date</th>
-                <th>Title</th>
-                <th>Entry</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="tbody">{entriesList}</tbody>
-          </table>
+          {entries.length === 0 ? (
+            noEntries
+          ) : (
+            <table id="entries-table">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Entry</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">{entriesList}</tbody>
+            </table>
+          )}
         </section>
         <div className="push" />
         <p className="footer"> copyright © 2018. MyDiary @ Andela. Hammed Noibi.</p>
@@ -115,13 +113,13 @@ Entries.propTypes = {
   history: PropTypes.object
 };
 const mapStateToProps = state => ({
-  entries: state.entries
+  entries: state.entries.allEntries
 });
 const mapDispatchToProps = dispatch => ({
-  openSingleEntry: entryId => dispatch({
-    type: 'SET_ACTIVE_VIEW_ENTRY',
-    payload: entryId
-  }),
+  // openSingleEntry: entryId => dispatch({
+  //   type: 'SET_ACTIVE_VIEW_ENTRY',
+  //   payload: entryId
+  // }),
   fetchUserEntries: () => dispatch(fetchEntries())
 });
 

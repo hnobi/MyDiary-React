@@ -1,3 +1,4 @@
+import toastr from 'toastr';
 import {
   UPDATE_ENTRY_SAVE_INPUT,
   UPDATE_ENTRY_REQUEST,
@@ -20,7 +21,9 @@ const updateEntry = data => (dispatch) => {
         type: UPDATE_ENTRY_SUCCESS,
         payload: response.data.message
       });
+      toastr.success('Successfully updated');
     })
+
     .catch((error) => {
       let message;
       if (error.response) {
@@ -38,6 +41,7 @@ const updateEntry = data => (dispatch) => {
         payload: message,
         error
       });
+      toastr.error(message);
     });
 };
 

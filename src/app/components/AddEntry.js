@@ -1,16 +1,20 @@
 /* eslint camelcase: ["error", {allow: ["UNSAFE_componentWillMount"]}] */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { NEW_ENTRY_SAVE_INPUT } from '../redux/constant/actionTypes';
 import newEntry from '../redux/actions/addEntry';
-import Alert from './Alert';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class AddEntry extends Component {
-  UNSAFE_componentWillMount() {
+  state = {
+    title: '',
+    date: '',
+    entry: ''
+  };
+
+  componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
     if (!authToken) {
@@ -18,12 +22,22 @@ class AddEntry extends Component {
     }
   }
 
+  handleOnChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleOnSubmit = (event) => {
+    const { history, handleAddEntry } = this.props;
+    event.preventDefault();
+    handleAddEntry(this.state, history);
+  };
+
   render() {
-    const { saveInput, handleAddEntry, history } = this.props;
-    const { title, entry, date } = this.props.newEntryData.input;
-    const newEntryInput = this.props.newEntryData.input;
-    const { loading, message } = this.props.newEntryData;
-    const statusClassName = loading ? 'loading' : '';
+    const { title, entry, date } = this.state;
+    // const { loading, message } = this.props.newEntryData;
+    // const statusClassName = loading ? 'loading' : '';
     return (
       <div>
         <nav className="navcolor">
@@ -58,17 +72,11 @@ class AddEntry extends Component {
           </Link>
         </nav>
         {/* {loading === false && status && <Alert message={message} status={status} />} */}
-        {message === 'success' && <Redirect to="/entries" />}
+        {/* {message === 'success' && <Redirect to="/entries" />} */}
         <section>
           <h2 className="heading">Add Entry</h2>
           <div className="container">
-            <form
-              id="add-entry"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleAddEntry(newEntryInput, history);
-              }}
-            >
+            <form id="add-entry" onSubmit={this.handleOnSubmit}>
               <label htmlFor="title">Entry title</label>
               <p id="existed-title">Title already exit in your diary</p>
               <input
@@ -77,7 +85,7 @@ class AddEntry extends Component {
                 name="title"
                 placeholder="Your title..."
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={title}
               />
               <label htmlFor="date">Date</label>
@@ -85,7 +93,7 @@ class AddEntry extends Component {
                 type="date"
                 id="date"
                 name="date"
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={date}
               />
               <label htmlFor="entry">Entry</label>
@@ -97,10 +105,10 @@ class AddEntry extends Component {
                 maxLength="500"
                 minLength="10"
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={entry}
               />
-              <input type="submit" value="Submit" className={statusClassName} />
+              <input type="submit" value="Submit" />
             </form>
           </div>
         </section>
@@ -111,27 +119,21 @@ class AddEntry extends Component {
 }
 
 AddEntry.propTypes = {
-  saveInput: PropTypes.func,
+  // saveInput: PropTypes.func,
   handleAddEntry: PropTypes.func,
-  newEntryData: PropTypes.object,
-  history: PropTypes.object
+  // newEntryData: PropTypes.object,
+  history: PropTypes.shape({})
 };
 
-const mapStateToProps = state => ({
-  newEntryData: state.newEntryData,
-  statusMessage: state.statusMessage
-});
+// const mapStateToProps = state => ({
+//   newEntryData: state.newEntryData,
+//   statusMessage: state.statusMessage
+// });
 const mapDispatchToProps = dispatch => ({
-  saveInput: (field, value) => {
-    dispatch({
-      type: NEW_ENTRY_SAVE_INPUT,
-      payload: { field, value }
-    });
-  },
   handleAddEntry: (data, history) => dispatch(newEntry(data, history))
 });
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(AddEntry);

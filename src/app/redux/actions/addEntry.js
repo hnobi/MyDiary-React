@@ -1,22 +1,22 @@
-import { NEW_ENTRY_FAILURE, NEW_ENTRY_SUCCESS, NEW_ENTRY_REQUEST } from '../constant/actionTypes';
+import { NEW_ENTRY_FAILURE, NEW_ENTRY_SUCCESS } from '../constant/actionTypes';
 import { newEntryRequest } from '../../services/apiRequest';
 import { getAuthToken } from '../../services/AuthToken';
 
 const newEntry = (data, history) => (dispatch) => {
-  dispatch({
-    type: NEW_ENTRY_REQUEST
-  });
+  // dispatch({
+  //   type: NEW_ENTRY_REQUEST
+  // });
   const userToken = getAuthToken();
   // eslint-disable-next-line no-param-reassign
   data.token = userToken;
 
   newEntryRequest(data)
     .then((response) => {
+      history.push('/entries');
       dispatch({
         type: NEW_ENTRY_SUCCESS,
         payload: response.data
       });
-      history.replace('/entries');
     })
     .catch((error) => {
       let message;

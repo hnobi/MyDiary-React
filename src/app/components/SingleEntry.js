@@ -8,19 +8,22 @@ import '../assets/css/main.css';
 
 class SingleEntry extends Component {
   // eslint-disable-next-line camelcase
-  UNSAFE_componentWillMount() {
+  // UNSAFE_componentWillMount() {
+  //   const authToken = getAuthToken();
+  //   const { history } = this.props;
+  //   if (!authToken) {
+  //     history.replace('/login');
+  //   }
+  // }
+
+  componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
     if (!authToken) {
       history.replace('/login');
-    }
-  }
-
-  componentDidMount() {
-    const { fetchSingleEntry, match } = this.props;
-    const { entryId } = match.params;
-    const authToken = getAuthToken();
-    if (authToken) {
+    } else {
+      const { fetchSingleEntry, match } = this.props;
+      const { entryId } = match.params;
       fetchSingleEntry(entryId);
     }
   }
@@ -112,7 +115,7 @@ SingleEntry.propTypes = {
 
 const mapStateToProps = state => ({
   entries: state.entries,
-  selectedEntry: state.selectedEntry || 1,
+  selectedEntry: state.selectedEntry || {},
   entry: state.selectedEntry.data || {}
 });
 const mapDispatchToProps = dispatch => ({
