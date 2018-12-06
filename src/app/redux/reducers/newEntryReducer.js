@@ -9,7 +9,8 @@ const initialState = {
   input: {
     title: '',
     entry: ''
-  }
+  },
+  status: null
 };
 
 const newEntryReducer = (state = initialState, action) => {
@@ -27,8 +28,7 @@ const newEntryReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        message: action.payload.message,
-        status: 'success'
+        message: action.payload.message
       };
     case NEW_ENTRY_FAILURE:
       return {

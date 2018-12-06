@@ -2,7 +2,7 @@ import { NEW_ENTRY_FAILURE, NEW_ENTRY_SUCCESS, NEW_ENTRY_REQUEST } from '../cons
 import { newEntryRequest } from '../../services/apiRequest';
 import { getAuthToken } from '../../services/AuthToken';
 
-const newEntry = data => (dispatch) => {
+const newEntry = (data, history) => (dispatch) => {
   dispatch({
     type: NEW_ENTRY_REQUEST
   });
@@ -16,7 +16,7 @@ const newEntry = data => (dispatch) => {
         type: NEW_ENTRY_SUCCESS,
         payload: response.data
       });
-      // eslint-disable-next-line no-restricted-globals
+      history.replace('/entries');
     })
     .catch((error) => {
       let message;

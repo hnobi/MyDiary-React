@@ -22,13 +22,8 @@ class AddEntry extends Component {
     const { saveInput, handleAddEntry, history } = this.props;
     const { title, entry, date } = this.props.newEntryData.input;
     const newEntryInput = this.props.newEntryData.input;
-    const { loading, message, status } = this.props.newEntryData;
+    const { loading, message } = this.props.newEntryData;
     const statusClassName = loading ? 'loading' : '';
-    if (status === 'success') {
-      setTimeout(() => {
-        history.replace('/entries');
-      }, 500);
-    }
     return (
       <div>
         <nav className="navcolor">
@@ -62,7 +57,7 @@ class AddEntry extends Component {
             </div>
           </Link>
         </nav>
-        {loading === false && <Alert message={message} status={status} />}
+        {/* {loading === false && status && <Alert message={message} status={status} />} */}
         {message === 'success' && <Redirect to="/entries" />}
         <section>
           <h2 className="heading">Add Entry</h2>
@@ -71,7 +66,7 @@ class AddEntry extends Component {
               id="add-entry"
               onSubmit={(e) => {
                 e.preventDefault();
-                handleAddEntry(newEntryInput);
+                handleAddEntry(newEntryInput, history);
               }}
             >
               <label htmlFor="title">Entry title</label>
@@ -133,8 +128,7 @@ const mapDispatchToProps = dispatch => ({
       payload: { field, value }
     });
   },
-  handleAddEntry: data => dispatch(newEntry(data)),
-  dispatch
+  handleAddEntry: (data, history) => dispatch(newEntry(data, history))
 });
 
 export default connect(
