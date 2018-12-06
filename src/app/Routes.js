@@ -12,7 +12,7 @@ import Logout from './components/Logout';
 export default class Routes extends Component {
   render() {
     return (
-      <BrowserRouter forceRefresh={true}>
+      <BrowserRouter>
         <Switch>
           <Route exact path="/" component={home} />
           <Route exact path="/signup" component={SignupForm} />

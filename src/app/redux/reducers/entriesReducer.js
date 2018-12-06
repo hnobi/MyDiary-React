@@ -8,7 +8,8 @@ const entriesReducer = (state = initialState, action) => {
       return [...state, ...action.payload];
 
     case NEW_ENTRY_SUCCESS:
-      return [action.payload, ...state];
+      console.log(action.payload.data, 'here...', state);
+      return [action.payload.data, ...state];
     default:
       return state;
   }
