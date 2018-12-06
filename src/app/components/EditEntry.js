@@ -8,35 +8,46 @@ import fetchEntry from '../redux/actions/viewEntry';
 import { updateEntry, saveUpdateInput } from '../redux/actions/updateEntry';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
-import Alert from './Alert';
+// import Alert from './Alert';
 
 class EditEntry extends Component {
-  UNSAFE_componentWillMount() {
+  state = {
+    title: '',
+    date: '',
+    entry: ''
+  };
+
+  componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
     if (!authToken) {
       history.replace('/login');
-    }
-  }
-
-  componentDidMount() {
-    const { fetchSingleEntry, match } = this.props;
-    const { entryId } = match.params;
-    const authToken = getAuthToken();
-    if (authToken) {
+    } else {
+      const { fetchSingleEntry, match } = this.props;
+      const { entryId } = match.params;
       fetchSingleEntry(entryId);
     }
   }
 
+  handleOnChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.updateSingleEntry({ ...this.state, entryId: this.props.match.params.entryId });
+  };
+
   render() {
-    const {
-      updateSingleEntry, updateEntryData, entry, saveInput
-    } = this.props;
-    const { loading, message, status } = this.props.updateEntryData;
+    const { updateEntryData, entry } = this.props;
+    // const { loading, message, status } = this.props.updateEntryData;
     const { input } = updateEntryData;
     const content = input.entry || entry.entry;
     const title = input.title || entry.title;
     const date = input.date || entry.date;
+
     return (
       <div>
         <nav className="navcolor">
@@ -48,7 +59,8 @@ class EditEntry extends Component {
           </div>
           <div style={{ margin: 'auto' }} />
           <div className="menu">
-            <ul>c
+            <ul>
+              c
               <li>
                 <Link to="/entries">View Entries</Link>
               </li>
@@ -70,18 +82,12 @@ class EditEntry extends Component {
             </div>
           </Link>
         </nav>
-        {loading === false && <Alert message={message} status={status} />}
+        {/* {!loading && <Alert message={message} status={status} />} */}
         <section>
           <h2 className="heading">Modify Entry</h2>
 
           <div className="container">
-            <form
-              id="modify-entry"
-              onSubmit={(e) => {
-                e.preventDefault();
-                updateSingleEntry({ ...input, entryId: entry.id });
-              }}
-            >
+            <form id="modify-entry" onSubmit={this.handleSubmit}>
               <label htmlFor="title">Entry title</label>
               <input
                 type="text"
@@ -89,7 +95,7 @@ class EditEntry extends Component {
                 name="title"
                 placeholder="Your title..."
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={title}
               />
               <label htmlFor="date">Date</label>
@@ -97,7 +103,7 @@ class EditEntry extends Component {
                 type="date"
                 id="date"
                 name="date"
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={date}
               />
               <label htmlFor="entry">Entry</label>
@@ -109,7 +115,7 @@ class EditEntry extends Component {
                 maxLength="500"
                 minLength="10"
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleOnChange}
                 defaultValue={content}
               />
               <input type="submit" value="Submit" />

@@ -11,6 +11,7 @@ const fetchEntry = data => (dispatch) => {
     type: FETCH_ENTRY_REQUEST,
     payload: data
   });
+
   const userToken = getAuthToken();
   // eslint-disable-next-line no-param-reassign
   data.token = userToken;

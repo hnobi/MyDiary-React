@@ -6,7 +6,10 @@ import {
 } from '../constant/actionTypes';
 
 const initialState = {
-  input: {}
+  input: {},
+  loading: false,
+  message: '',
+  status: ''
 };
 
 const updateEntryReducer = (state = initialState, action) => {

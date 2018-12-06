@@ -20,6 +20,7 @@ const fetchEntries = () => (dispatch) => {
   };
   fetchEntriesRequest(data)
     .then((response) => {
+      console.log('action', response.data.entries);
       dispatch({
         type: FETCH_ENTRIES_SUCCESS,
         payload: response.data.entries
