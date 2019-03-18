@@ -8,7 +8,15 @@ body {
   height: 100%;
   min-height: 100%;
   background-size: cover;
-  background: #b3aea4;
+  background: #f3f1ed;
+
+}
+
+.loader{
+display: flex;
+justify-content: center;
+align-items: center;
+/* margin-top:50px; */
 }
 
 .loader{
@@ -32,6 +40,8 @@ align-items: center;
   justify-content: center;
   width: 70%;
   margin: 20px auto;
+  font-family:'Source Sans Pro', sans-serif;
+
 }
 input[type="submit"].loading,
 .loading {
@@ -284,7 +294,7 @@ search-entry-title {
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin-top: ;
+  /* margin-top: ; */
   background-color: #212121;
   height: 30px;
   padding-top: 50px;
@@ -384,14 +394,17 @@ section {
 h2.heading {
   text-align: center;
   font-family: "Franklin Gothic Medium";
+
+  color:rgb(51, 49, 49);
 }
 table {
   margin: 40px auto;
-  color: #fff;
-  /* border: 1px solid rgb(133, 97, 7); */
+  color: black;
+  border: 1px solid rgb(199, 196, 196);
   width: 90%;
   border-collapse: collapse;
   border-spacing: 0;
+  font-family:'Source Sans Pro', sans-serif;
 }
 th:first-child {
   border-radius: 6px 0 0 0;
@@ -401,18 +414,19 @@ th:last-child {
 }
 
 tr:nth-of-type(odd) {
-  background: rgb(94, 87, 87);
+  background: rgb(199, 196, 196);
   opacity: 0.9;
 }
 tr:nth-of-type(even) {
-  background: rgb(27, 27, 25);
   opacity: 0.8;
 }
 
 th {
-  background: rgb(133, 97, 7);
+  background: rgb(51, 49, 49);
   color: white;
   font-weight: bold;
+  height: 60px;
+  text-transform:uppercase;
 }
 
 td,
@@ -423,15 +437,16 @@ th {
 }
 
 .view-button {
-  background-color: black;
+  background-color: rgb(19, 17, 17);
+  font-family:'Source Sans Pro', sans-serif;
   color: #fff;
   padding: 8px;
   font-size: 12px;
   border-radius: 5px;
 }
 .view-button:hover {
-  background-color: rgb(2, 26, 2);
-  color: #fff;
+  background-color: rgb(251, 251, 251);
+  color: rgb(51, 49, 49);;
 }
 
 @media screen and (max-width: 1092px) {

@@ -2,20 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 import fetchEntry from '../redux/actions/viewEntry';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class SingleEntry extends Component {
-  // eslint-disable-next-line camelcase
-  // UNSAFE_componentWillMount() {
-  //   const authToken = getAuthToken();
-  //   const { history } = this.props;
-  //   if (!authToken) {
-  //     history.replace('/login');
-  //   }
-  // }
-
   componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
@@ -31,7 +23,7 @@ class SingleEntry extends Component {
   render() {
     const { entry } = this.props;
     return (
-      <div>
+      <div className="body-image">
         <nav className="navcolor">
           <div id="logo" className="nav-logo">
             <Link to="/" style={{ display: 'flex' }} className="nav-logo">
@@ -50,7 +42,7 @@ class SingleEntry extends Component {
               </li>
             </ul>
           </div>
-          <Link to="user_detail.html" id="user">
+          <Link to="/profile" id="user">
             <div className="user">
               <img
                 src="../assets/img/default-img.png"
@@ -77,7 +69,8 @@ class SingleEntry extends Component {
             </div>
             <div className="date">
               <h3>Posted : </h3>
-              <p id="date">{entry.date}</p>
+              <p id="date">
+                {moment(entry.date).format('MMMM Do YYYY')}              </p>
             </div>
             <div
               className="div"

@@ -58,7 +58,7 @@ class AddEntry extends Component {
               </li>
             </ul>
           </div>
-          <Link to="user_detail.html" id="user">
+          <Link to="/profile" id="user">
             <div className="user">
               <img
                 src="../assets/img/default-img.png"
@@ -71,14 +71,11 @@ class AddEntry extends Component {
             </div>
           </Link>
         </nav>
-        {/* {loading === false && status && <Alert message={message} status={status} />} */}
-        {/* {message === 'success' && <Redirect to="/entries" />} */}
         <section>
           <h2 className="heading">Add Entry</h2>
           <div className="container">
             <form id="add-entry" onSubmit={this.handleOnSubmit}>
               <label htmlFor="title">Entry title</label>
-              <p id="existed-title">Title already exit in your diary</p>
               <input
                 type="text"
                 id="title"
@@ -104,6 +101,7 @@ class AddEntry extends Component {
                 placeholder="Your entry..."
                 maxLength="500"
                 minLength="10"
+                rows= "20"
                 required
                 onChange={this.handleOnChange}
                 defaultValue={entry}

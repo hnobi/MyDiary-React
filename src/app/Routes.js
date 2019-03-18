@@ -8,6 +8,7 @@ import Entries from './components/Entries';
 import SingleEntry from './components/SingleEntry';
 import EditEntry from './components/EditEntry';
 import Logout from './components/Logout';
+import UserProfile from './components/UserProfile';
 
 export default class Routes extends Component {
   render() {
@@ -22,6 +23,7 @@ export default class Routes extends Component {
           <Route exact path="/entries/:entryId" component={SingleEntry} />
           <Route exact path="/entries/edit/:entryId" component={EditEntry} />
           <Route exact path="/logout" component={Logout} />
+          <Route exact path="/profile" component={UserProfile} />
         </Switch>
       </BrowserRouter>
     );

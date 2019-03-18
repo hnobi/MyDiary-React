@@ -32,6 +32,7 @@ exports[`renders LoginForm component without crashing 1`] = `
           placeholder="username"
           required={true}
           type="text"
+          value=""
         />
         <label
           htmlFor="password"
@@ -45,12 +46,14 @@ exports[`renders LoginForm component without crashing 1`] = `
           placeholder="secret password"
           required={true}
           type="password"
+          value=""
         />
-        <input
+        <button
           className=""
           type="submit"
-          value="Login"
-        />
+        >
+          Login
+        </button>
       </form>
       <p>
         dont have an Account ? 

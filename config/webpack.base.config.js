@@ -44,7 +44,7 @@ module.exports = env => {
           }
         ]
       },
-      
+
       plugins: [
         new HtmlWebpackPlugin({
           template: "./src/index.html",

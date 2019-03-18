@@ -6,6 +6,7 @@ import authenticatedUserReducer from './authenticatedUserReducer';
 import entriesReducer from './entriesReducer';
 import selectedEntryReducer from './selectedEntryReducer';
 import updateEntryReducer from './updateEntryReducer';
+import userProfileReducer from './userDetailsReducer';
 
 export default combineReducers({
   signupData: signupReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   entries: entriesReducer,
   selectedEntry: selectedEntryReducer,
   updateEntryData: updateEntryReducer,
+  userProfile: userProfileReducer
 });

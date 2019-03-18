@@ -40,13 +40,13 @@ exports[`renders Signupnt without crashing 1`] = `
           Fullname
         </label>
         <input
-          defaultValue="hammede"
           id="fullname"
           name="fullname"
           onChange={[Function]}
           placeholder="Your fullname..."
           required={true}
           type="text"
+          value=""
         />
         <label
           htmlFor="email"
@@ -54,7 +54,7 @@ exports[`renders Signupnt without crashing 1`] = `
           Email
         </label>
         <input
-          defaultValue="ass@jwjjw.com"
+          defaultValue=""
           id="email"
           name="email"
           onChange={[Function]}
@@ -68,7 +68,7 @@ exports[`renders Signupnt without crashing 1`] = `
           Username
         </label>
         <input
-          defaultValue="hnobi"
+          defaultValue=""
           id="username"
           name="username"
           onChange={[Function]}
@@ -84,7 +84,6 @@ exports[`renders Signupnt without crashing 1`] = `
           Password
         </label>
         <input
-          defaultValue="Hnonie23"
           id="password"
           name="password"
           onChange={[Function]}
@@ -94,11 +93,12 @@ exports[`renders Signupnt without crashing 1`] = `
           title="Password must contain atleast one number and one letter and must be between 8 to 12 characters "
           type="password"
         />
-        <input
+        <button
           className=""
           type="submit"
-          value="Sign up"
-        />
+        >
+          Signup
+        </button>
       </form>
     </div>
     <div

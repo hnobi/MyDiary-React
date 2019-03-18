@@ -1,3 +1,4 @@
+import toastr from 'toastr';
 import { NEW_ENTRY_FAILURE, NEW_ENTRY_SUCCESS } from '../constant/actionTypes';
 import { newEntryRequest } from '../../services/apiRequest';
 import { getAuthToken } from '../../services/AuthToken';
@@ -14,11 +15,12 @@ const newEntry = (data, history) => (dispatch) => {
 
   newEntryRequest(data)
     .then((response) => {
-      history.push('/entries');
       dispatch({
         type: NEW_ENTRY_SUCCESS,
         payload: response.data
       });
+      toastr.success(response.data.message);
+      history.push('/entries');
     })
     .catch((error) => {
       let message;
@@ -37,6 +39,7 @@ const newEntry = (data, history) => (dispatch) => {
         payload: message,
         error
       });
+      toastr.error(message);
     });
 };
 export default newEntry;

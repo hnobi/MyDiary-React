@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import fetchEntries from '../redux/actions/entries';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
+import 'moment-timezone';
 
 class Entries extends Component {
   componentDidMount() {
@@ -25,15 +27,15 @@ class Entries extends Component {
 
   render() {
     const { entries } = this.props;
-    console.log('#$%$', entries);
     const noEntries = 'There are no entries available';
+
     const entriesList = entries.map((item, index) => (
-      <tr key={index}>
+      <tr key={item.id}>
         <td>{index + 1}</td>
-        <td>{item.date}</td>
+        <td>{moment(item.date).format('MMMM Do YYYY')}</td>
         <td>{item.title}</td>
         <td>
-          {item.entry}
+          {`${item.entry.split(' ').slice(0, 4).join(' ')} . . .`}
         </td>
         <td>
           <a>
@@ -44,8 +46,9 @@ class Entries extends Component {
         </td>
       </tr>
     ));
+
     return (
-      <div>
+      <div >
         <nav className="navcolor">
           <div id="logo" className="nav-logo">
             <Link to="/" style={{ display: 'flex' }} className="nav-logo">
@@ -53,12 +56,9 @@ class Entries extends Component {
               <span> My Diary</span>
             </Link>
           </div>
-          <div style={{ margin: 'auto' }} />
+          {/* <div style={{ margin: 'auto' }} /> */}
           <div className="menu">
             <ul>
-              <li>
-                <Link to="/entries">View Entries</Link>
-              </li>
               <li>
                 <Link to="/add-entry">Add Entry</Link>
               </li>
@@ -67,7 +67,7 @@ class Entries extends Component {
               </li>
             </ul>
           </div>
-          <Link to="user_detail.html" id="user">
+          <Link to="/profile" id="user">
             <div className="user">
               <img
                 src="../assets/img/default-img.png"
@@ -85,18 +85,18 @@ class Entries extends Component {
           {entries.length === 0 ? (
             noEntries
           ) : (
-            <table id="entries-table">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Entry</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody id="tbody">{entriesList}</tbody>
-            </table>
+              <table id="entries-table">
+                <thead>
+                  <tr>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Title</th>
+                    <th>Entry</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="tbody">{entriesList}</tbody>
+              </table>
           )}
         </section>
         <div className="push" />
@@ -116,10 +116,7 @@ const mapStateToProps = state => ({
   entries: state.entries.allEntries
 });
 const mapDispatchToProps = dispatch => ({
-  // openSingleEntry: entryId => dispatch({
-  //   type: 'SET_ACTIVE_VIEW_ENTRY',
-  //   payload: entryId
-  // }),
+
   fetchUserEntries: () => dispatch(fetchEntries())
 });
 

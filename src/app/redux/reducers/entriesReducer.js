@@ -7,7 +7,6 @@ const initialState = {
 const entriesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ENTRIES_SUCCESS:
-      console.log('reducer', action.payload);
       return { ...state, allEntries: [...action.payload] };
 
     case NEW_ENTRY_SUCCESS:

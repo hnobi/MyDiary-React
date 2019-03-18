@@ -8,24 +8,30 @@ import fetchEntry from '../redux/actions/viewEntry';
 import { updateEntry, saveUpdateInput } from '../redux/actions/updateEntry';
 import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
-// import Alert from './Alert';
 
 class EditEntry extends Component {
   state = {
-    title: '',
-    date: '',
-    entry: ''
+    title: this.props.entry.title,
+    date: this.props.entry.date,
+    entry: this.props.entry.entry
   };
 
   componentDidMount() {
     const authToken = getAuthToken();
-    const { history } = this.props;
+    const { history, entry } = this.props;
+
     if (!authToken) {
       history.replace('/login');
     } else {
       const { fetchSingleEntry, match } = this.props;
       const { entryId } = match.params;
       fetchSingleEntry(entryId);
+      // this.setState({
+      //   title: updateEntryData.title,
+      //   entry: updateEntryData.entry,
+      //   date: updateEntryData.date
+      // });
+      console.log('----------', entry);
     }
   }
 
@@ -41,12 +47,12 @@ class EditEntry extends Component {
   };
 
   render() {
-    const { updateEntryData, entry } = this.props;
+    // const { updateEntryData, entry } = this.props;
     // const { loading, message, status } = this.props.updateEntryData;
-    const { input } = updateEntryData;
-    const content = input.entry || entry.entry;
-    const title = input.title || entry.title;
-    const date = input.date || entry.date;
+    // const { input } = updateEntryData;
+    // const content = input.entry || entry.entry;
+    // const title = input.title || entry.title;
+    // const date = input.date || entry.date;
 
     return (
       <div>
@@ -60,7 +66,6 @@ class EditEntry extends Component {
           <div style={{ margin: 'auto' }} />
           <div className="menu">
             <ul>
-              c
               <li>
                 <Link to="/entries">View Entries</Link>
               </li>
@@ -69,7 +74,7 @@ class EditEntry extends Component {
               </li>
             </ul>
           </div>
-          <Link to="user_detail.html" id="user">
+          <Link to="/profile" id="user">
             <div className="user">
               <img
                 src="../assets/img/default-img.png"
@@ -82,7 +87,6 @@ class EditEntry extends Component {
             </div>
           </Link>
         </nav>
-        {/* {!loading && <Alert message={message} status={status} />} */}
         <section>
           <h2 className="heading">Modify Entry</h2>
 
@@ -96,7 +100,7 @@ class EditEntry extends Component {
                 placeholder="Your title..."
                 required
                 onChange={this.handleOnChange}
-                defaultValue={title}
+                value={this.state.title}
               />
               <label htmlFor="date">Date</label>
               <input
@@ -104,7 +108,7 @@ class EditEntry extends Component {
                 id="date"
                 name="date"
                 onChange={this.handleOnChange}
-                defaultValue={date}
+                value={this.state.date}
               />
               <label htmlFor="entry">Entry</label>
               <textarea
@@ -114,9 +118,10 @@ class EditEntry extends Component {
                 placeholder="Your entry..."
                 maxLength="500"
                 minLength="10"
+                rows= "20"
                 required
                 onChange={this.handleOnChange}
-                defaultValue={content}
+                value={this.state.entry}
               />
               <input type="submit" value="Submit" />
             </form>
@@ -129,7 +134,7 @@ class EditEntry extends Component {
   }
 }
 EditEntry.propTypes = {
-  updateEntryData: PropTypes.object,
+  updateEntryData: PropTypes.any,
   entry: PropTypes.object,
   history: PropTypes.object,
   fetchSingleEntry: PropTypes.func,
@@ -140,7 +145,7 @@ EditEntry.propTypes = {
 
 const mapStateToProps = state => ({
   entry: state.selectedEntry.data || {},
-  updateEntryData: state.updateEntryData || {}
+  updateEntryData: state.updateEntryData.input || {}
 });
 const mapDispatchToProps = dispatch => ({
   fetchSingleEntry: entryId => dispatch(fetchEntry({ entryId })),

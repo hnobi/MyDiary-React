@@ -16,11 +16,15 @@ const fetchEntryRequest = data => axios.get(`${baseUrl}/entries/${data.entryId}?
 
 const updateEntryRequest = data => axios.put(`${baseUrl}/entries/${data.entryId}?token=${data.token}`, data);
 
+const fetchUserProfile = data => axios.get(`${baseUrl}/user/details?token=${data.token}`);
+
+
 export {
   signUpRequest,
   loginRequest,
   newEntryRequest,
   fetchEntriesRequest,
   fetchEntryRequest,
-  updateEntryRequest
+  updateEntryRequest,
+  fetchUserProfile,
 };
