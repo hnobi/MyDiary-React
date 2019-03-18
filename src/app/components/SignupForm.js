@@ -2,21 +2,39 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { SIGNUP_SAVE_INPUT } from '../redux/constant/actionTypes';
 import userSignup from '../redux/actions/signUp';
-import Alert from './Alert';
+import Loader from './spinner';
 import '../assets/css/main.css';
 import '../assets/css/form.css';
 
 export class SignupForm extends Component {
+  constructor() {
+    super();
+    this.state = {
+      fullname: '',
+      email: '',
+      username: '',
+    };
+  }
+
+  handleInputchange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  handleDSignupSubmit = (e) => {
+    e.preventDefault();
+    this.props.handleUserSignup(this.state);
+  }
+
   render() {
-    const { saveInput, handleUserSignup, history } = this.props;
+    const { history } = this.props;
     const {
       fullname, username, email, password
-    } = this.props.signupData.input;
-    const signupInput = this.props.signupData.input;
+    } = this.state;
 
-    const { loading, message, status } = this.props.signupData;
+    const { loading, status } = this.props.signupData;
     const statusClassName = loading ? 'loading' : '';
     if (status === 'success') {
       setTimeout(() => {
@@ -30,16 +48,12 @@ export class SignupForm extends Component {
             <Link to="/login">Login</Link>
           </div>
         </nav>
-        {loading === false && <Alert message={message} status={status} />}
         <main>
           <h2>Sign up</h2>
           <div className="Sign-in-out">
             <form
               id="signup"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleUserSignup(signupInput);
-              }}
+              onSubmit={this.handleDSignupSubmit}
             >
               <p>
                 Already have an Account ?<Link to="/login">Sign in</Link>
@@ -51,8 +65,8 @@ export class SignupForm extends Component {
                 name="fullname"
                 placeholder="Your fullname..."
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
-                defaultValue={fullname}
+                onChange={this.handleInputchange}
+                value={fullname}
               />
               <label htmlFor="email">Email</label>
               <input
@@ -61,7 +75,7 @@ export class SignupForm extends Component {
                 name="email"
                 placeholder="Email address..."
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleInputchange}
                 defaultValue={email}
               />
 
@@ -74,7 +88,7 @@ export class SignupForm extends Component {
                 required
                 pattern="^[(A-Za-z)|0-9].{1,15}$"
                 title="Username may only contain letters or numbers and must be between 2 and 15 characters"
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleInputchange}
                 defaultValue={username}
               />
 
@@ -88,10 +102,13 @@ export class SignupForm extends Component {
                 title="Password must contain atleast one number and one letter and must be between 8 to 12 characters "
                 required
                 defaultValue={password}
-                onChange={e => saveInput(e.target.name, e.target.value)}
+                onChange={this.handleInputchange}
               />
 
-              <input type="submit" value="Sign up" className={statusClassName} />
+              <button type="submit" className={statusClassName}>
+                {loading ? <Loader color = {'#fff'} size = {30} />
+                  : 'Signup'}
+              </button>
             </form>
           </div>
           <div className="push" />
@@ -106,7 +123,6 @@ export class SignupForm extends Component {
   }
 }
 SignupForm.propTypes = {
-  saveInput: PropTypes.func,
   handleUserSignup: PropTypes.func,
   signupData: PropTypes.object,
   history: PropTypes.object
@@ -116,12 +132,6 @@ const mapStateToProps = state => ({
   signupData: state.signupData
 });
 const mapDispatchToProps = dispatch => ({
-  saveInput: (field, value) => {
-    dispatch({
-      type: SIGNUP_SAVE_INPUT,
-      payload: { field, value }
-    });
-  },
   handleUserSignup: data => dispatch(userSignup(data))
 });
 

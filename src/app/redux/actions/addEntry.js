@@ -2,10 +2,12 @@ import { NEW_ENTRY_FAILURE, NEW_ENTRY_SUCCESS } from '../constant/actionTypes';
 import { newEntryRequest } from '../../services/apiRequest';
 import { getAuthToken } from '../../services/AuthToken';
 
+// const aaa = response => (
+//   {
+//     type: NEW_ENTRY_SUCCESS,
+//     payload: response.data
+//   });
 const newEntry = (data, history) => (dispatch) => {
-  // dispatch({
-  //   type: NEW_ENTRY_REQUEST
-  // });
   const userToken = getAuthToken();
   // eslint-disable-next-line no-param-reassign
   data.token = userToken;

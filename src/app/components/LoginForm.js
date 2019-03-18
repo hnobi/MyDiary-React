@@ -2,29 +2,50 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { LOGIN_SAVE_INPUT } from '../redux/constant/actionTypes';
 import userLogin from '../redux/actions/login';
-import Alert from './Alert';
+import Loader from './spinner';
 import '../assets/css/main.css';
 import '../assets/css/form.css';
+import { removeAuthToken } from '../services/AuthToken';
 
 export class LoginForm extends Component {
-  render() {
-    const { saveInput, handleUserLogin, history } = this.props;
-    const { username, password } = this.props.loginData.input;
-    const loginInput = this.props.loginData.input;
-    const { loading, message, status } = this.props.loginData;
-    const statusClassName = loading ? 'loading' : '';
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+  }
 
+  handlesInputchange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
+  handleUserSubmit = (e) => {
+    e.preventDefault();
+    this.props.handleUserLogin(this.state);
+  }
+
+  componentDidMount() {
+    removeAuthToken();
+  }
+
+  render() {
+    const { history } = this.props;
+    const { loading, status } = this.props.loginData;
+
+    const statusClassName = loading ? 'loading' : '';
     if (status === 'success') {
       setTimeout(() => {
         history.push('/add-entry');
       }, 500);
     }
+
     return (
       <div>
         <main>
-          {loading === false && <Alert message={message} status={status} />}
           <div id="after-click">
             <h3>Invalid username or password</h3>
           </div>
@@ -32,10 +53,7 @@ export class LoginForm extends Component {
           <div className="Sign-in-out">
             <form
               id="signin"
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleUserLogin(loginInput);
-              }}
+              onSubmit={this.handleUserSubmit}
             >
               <label htmlFor="username">Username</label>
               <input
@@ -44,8 +62,8 @@ export class LoginForm extends Component {
                 name="username"
                 placeholder="username"
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
-                defaultValue={username}
+                onChange={this.handlesInputchange}
+                value={this.state.username}
               />
 
               <label htmlFor="password">Password</label>
@@ -55,10 +73,13 @@ export class LoginForm extends Component {
                 name="password"
                 placeholder="secret password"
                 required
-                onChange={e => saveInput(e.target.name, e.target.value)}
-                defaultValue={password}
+                onChange={this.handlesInputchange}
+                value={this.state.password}
               />
-              <input type="submit" value="Login" className={statusClassName} />
+              <button type="submit" className={statusClassName}>
+                {loading ? <Loader color={'#fff'} size={30} />
+                  : 'Login'}
+              </button>
             </form>
             <p>
               dont have an Account ? <Link to="/signup"> Sign up</Link>{' '}
@@ -73,24 +94,16 @@ export class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  saveInput: PropTypes.func,
   handleUserLogin: PropTypes.func,
-  username: PropTypes.string,
-  password: PropTypes.string,
+  loginData: PropTypes.any,
   history: PropTypes.any,
-  loginData: PropTypes.object
 };
 
 const mapStateToProps = state => ({
   loginData: state.loginData
 });
+
 const mapDispatchToProps = dispatch => ({
-  saveInput: (field, value) => {
-    dispatch({
-      type: LOGIN_SAVE_INPUT,
-      payload: { field, value }
-    });
-  },
   handleUserLogin: (data, history) => dispatch(userLogin(data, history))
 });
 
