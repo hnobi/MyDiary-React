@@ -1,4 +1,7 @@
+import toastr from 'toastr';
+
 import { loginRequest } from '../../services/apiRequest';
+
 import {
   USER_LOGIN_SUCCESS,
   USER_LOGIN_FAILURE,
@@ -16,7 +19,7 @@ const userLogin = data => (dispatch) => {
         type: USER_LOGIN_SUCCESS,
         payload: response.data
       });
-
+      toastr.success(response.data.message);
       saveAuthToken(response.data.token);
     })
     .catch((error) => {
@@ -30,6 +33,7 @@ const userLogin = data => (dispatch) => {
         type: USER_LOGIN_FAILURE,
         payload: message
       });
+      toastr.error(message);
     });
 };
 

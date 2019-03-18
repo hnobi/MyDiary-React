@@ -10,6 +10,14 @@ body {
   background-size: cover;
   background: #b3aea4;
 }
+
+.loader{
+display: flex;
+justify-content: center;
+align-items: center;
+/* margin-top:50px; */
+}
+
 .body-image {
   background: url("./../img/bg.jpg") bottom;
   height: 100%;

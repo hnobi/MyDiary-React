@@ -26,7 +26,6 @@ exports[`renders LoginForm component without crashing 1`] = `
           Username
         </label>
         <input
-          defaultValue="hnobi"
           id="username"
           name="username"
           onChange={[Function]}
@@ -40,7 +39,6 @@ exports[`renders LoginForm component without crashing 1`] = `
           Password
         </label>
         <input
-          defaultValue="Hnonie23"
           id="password"
           name="password"
           onChange={[Function]}
