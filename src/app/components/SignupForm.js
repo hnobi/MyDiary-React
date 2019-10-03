@@ -58,7 +58,7 @@ export class SignupForm extends Component {
               <p>
                 Already have an Account ?<Link to="/login">Sign in</Link>
               </p>
-              <label htmlFor="fullname">Fullname</label>
+              <label className='label'  htmlFor="fullname">Fullname</label>
               <input
                 type="text"
                 id="fullname"
@@ -68,7 +68,7 @@ export class SignupForm extends Component {
                 onChange={this.handleInputchange}
                 value={fullname}
               />
-              <label htmlFor="email">Email</label>
+              <label className='label' htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
@@ -79,7 +79,7 @@ export class SignupForm extends Component {
                 defaultValue={email}
               />
 
-              <label htmlFor="username">Username</label>
+              <label className='label' htmlFor="username">Username</label>
               <input
                 type="text"
                 id="username"
@@ -92,7 +92,7 @@ export class SignupForm extends Component {
                 defaultValue={username}
               />
 
-              <label htmlFor="country">Password</label>
+              <label className='label' htmlFor="country">Password</label>
               <input
                 type="password"
                 id="password"

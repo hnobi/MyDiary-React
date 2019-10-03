@@ -13,19 +13,19 @@ import UserProfile from './components/UserProfile';
 export default class Routes extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={home} />
-          <Route exact path="/signup" component={SignupForm} />
-          <Route exact path="/login" component={LoginForm} />
-          <Route exact path="/add-entry" component={AddEntry} />
-          <Route exact path="/entries" component={Entries} />
-          <Route exact path="/entries/:entryId" component={SingleEntry} />
-          <Route exact path="/entries/edit/:entryId" component={EditEntry} />
-          <Route exact path="/logout" component={Logout} />
-          <Route exact path="/profile" component={UserProfile} />
-        </Switch>
-      </BrowserRouter>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={home} />
+                    <Route exact path="/signup" component={SignupForm} />
+                    <Route exact path="/login" component={LoginForm} />
+                    <Route exact path="/add-entry" component={AddEntry} />
+                    <Route exact path="/entries" component={Entries} />
+                    <Route exact path="/entries/:entryId" component={SingleEntry} />
+                    <Route exact path="/entries/edit/:entryId" component={EditEntry} />
+                    <Route exact path="/logout" component={Logout} />
+                    <Route exact path="/profile" component={UserProfile} />
+                </Switch>
+            </BrowserRouter>
     );
   }
 }

@@ -8,91 +8,88 @@ import { getAuthToken } from '../services/AuthToken';
 import '../assets/css/main.css';
 
 class SingleEntry extends Component {
+
+  
   componentDidMount() {
     const authToken = getAuthToken();
     const { history } = this.props;
+
     if (!authToken) {
       history.replace('/login');
-    } else {
-      const { fetchSingleEntry, match } = this.props;
-      const { entryId } = match.params;
-      fetchSingleEntry(entryId);
     }
+
+    const { fetchSingleEntry, match } = this.props;
+    const { entryId } = match.params;
+
+    fetchSingleEntry(entryId);
   }
 
   render() {
     const { entry } = this.props;
     return (
-      <div className="body-image">
-        <nav className="navcolor">
-          <div id="logo" className="nav-logo">
-            <Link to="/" style={{ display: 'flex' }} className="nav-logo">
-              <img src="../assets/img/logo-small2.png" alt="logo" />
-              <span> My Diary</span>
-            </Link>
-          </div>
-          <div style={{ margin: 'auto' }} />
-          <div className="menu">
-            <ul>
-              <li>
-                <Link to="/entries">View Entries</Link>
-              </li>
-              <li id="logout">
-                <Link to="/logout">Logout</Link>
-              </li>
-            </ul>
-          </div>
-          <Link to="/profile" id="user">
-            <div className="user">
-              <img
-                src="../assets/img/default-img.png"
-                alt="User"
-                width="96"
-                height="96"
-                id="nav-img"
-              />
-              <span id="nav-name" />
-            </div>
-          </Link>
-        </nav>
-        <section>
-          <h2 className="heading">Entry information</h2>
+            <div className="body-image">
+                <nav className="navcolor">
+                    <div id="logo" className="nav-logo">
+                        <Link to="/" style={{ display: 'flex' }} className="nav-logo">
+                            <img src="../assets/img/logo-small2.png" alt="logo" />
+                            <span> My Diary</span>
+                        </Link>
+                    </div>
+                    <div style={{ margin: 'auto' }} />
+                    <div className="menu">
+                        <ul>
+                            <li>
+                                <Link to="/entries">View Entries</Link>
+                            </li>
+                            <li id="logout">
+                                <Link to="/logout">Logout</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <Link to="/profile" id="user">
+                        <div className="user">
+                            <img src="../assets/img/default-img.png" alt="User" width="96" height="96" id="nav-img" />
+                            <span id="nav-name" />
+                        </div>
+                    </Link>
+                </nav>
+                <section>
+                    <h2 className="heading">Entry information</h2>
 
-          <div className="container view-entry">
-            <div className="title">
-              <h3>Entry title</h3>
-              <p id="title">{entry.title}</p>
-            </div>
-            <h3>Entry</h3>
-            <div className="entry">
-              <p id="content">{entry.entry}</p>
-            </div>
-            <div className="date">
-              <h3>Posted : </h3>
-              <p id="date">
-                {moment(entry.date).format('MMMM Do YYYY')}              </p>
-            </div>
-            <div
-              className="div"
-              style={{
-                display: 'flex',
-                width: '100%',
-                justifyContent: 'space-between',
-                margin: 'auto'
-              }}
-            >
-              <Link to={`/entries/edit/${entry.id}`}>
-                <button className="edit edit-btn">edit</button>
-              </Link>
-              {/* <a id="delete" onClick={() => deleteSingleEntry(entry.id)}>
+                    <div className="container view-entry">
+                        <div className="title">
+                            <h3>Entry title</h3>
+                            <p id="title">{entry.title}</p>
+                        </div>
+                        <h3>Entry</h3>
+                        <div className="entry">
+                            <p id="content">{entry.entry}</p>
+                        </div>
+                        <div className="date">
+                            <h3>Posted : </h3>
+                            <p id="date">{moment(entry.date).format('MMMM Do YYYY')} </p>
+                        </div>
+                        <div
+                            className="div"
+                            style={{
+                              display: 'flex',
+                              width: '100%',
+                              justifyContent: 'space-between',
+                              margin: 'auto'
+                            }}
+                        >
+                            <Link to={`/entries/edit/${entry.id}`}>
+                                <button className="edit edit-btn">edit</button>
+                            </Link>
+                            {/* <a id="delete" onClick={() => deleteSingleEntry(entry.id)}>
                 <button className="delete  delete-btn">delete</button>
               </a> */}
+                        </div>
+                    </div>
+                </section>
+                <div className="push" />
+                <p className="footer "> copyright © 2018. MyDiary @ Andela. Hammed Noibi.</p>
             </div>
-          </div>
-        </section>
-        <div className="push" />
-        <p className="footer "> copyright © 2018. MyDiary @ Andela. Hammed Noibi.</p>
-      </div>
     );
   }
 }
@@ -115,7 +112,4 @@ const mapDispatchToProps = dispatch => ({
   fetchSingleEntry: entryId => dispatch(fetchEntry({ entryId }))
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SingleEntry);
+export default connect(mapStateToProps, mapDispatchToProps)(SingleEntry);

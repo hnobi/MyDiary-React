@@ -10,7 +10,8 @@ const loginData = {
   input: {
     username: 'hnobi',
     password: 'Hnonie23'
-  }
+  },
+  status: 'success'
 };
 test('renders LoginForm component without crashing', () => {
   const wrapper = shallow(

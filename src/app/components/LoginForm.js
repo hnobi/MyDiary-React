@@ -33,8 +33,8 @@ export class LoginForm extends Component {
   }
 
   render() {
-    const { history } = this.props;
-    const { loading, status } = this.props.loginData;
+    const { history, loginData } = this.props;
+    const { loading, status } = loginData;
 
     const statusClassName = loading ? 'loading' : '';
     if (status === 'success') {
@@ -45,6 +45,11 @@ export class LoginForm extends Component {
 
     return (
       <div>
+         <nav>
+          <div id="logo">
+            <Link to="/signup">Login</Link>
+          </div>
+        </nav>
         <main>
           <div id="after-click">
             <h3>Invalid username or password</h3>
@@ -55,7 +60,7 @@ export class LoginForm extends Component {
               id="signin"
               onSubmit={this.handleUserSubmit}
             >
-              <label htmlFor="username">Username</label>
+              <label className='label' htmlFor="username">Username</label>
               <input
                 type="text"
                 id="username"
@@ -66,7 +71,7 @@ export class LoginForm extends Component {
                 value={this.state.username}
               />
 
-              <label htmlFor="password">Password</label>
+              <label className='label' htmlFor="password">Password</label>
               <input
                 type="password"
                 id="password"
@@ -84,7 +89,6 @@ export class LoginForm extends Component {
             <p>
               dont have an Account ? <Link to="/signup"> Sign up</Link>{' '}
             </p>
-            <div className="push" />
           </div>
           <p className="footer">copyright © 2018. MyDiary @ Andela. Hammed Noibi.</p>
         </main>

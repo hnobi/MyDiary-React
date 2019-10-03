@@ -1,0 +1,542 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    /* min-height: 100%; */
+    background-size: cover;
+    background: #f3f1ed;
+}
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin-top:50px; */
+}
+
+.body-image {
+    background: url('./../img/bg.jpg') bottom;
+    height: 100%;
+    background-size: cover;
+}
+.container {
+    display: flex;
+    border-radius: 5px;
+    border: 2px solid #000;
+    background-color: #f2f2f2;
+    padding: 20px;
+    justify-content: center;
+    width: 70%;
+    margin: 20px auto;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+input[type='submit'].loading,
+.loading {
+    pointer-events: none;
+    background: gray;
+}
+.view-entry {
+    width: 90%;
+
+    border: none;
+    display: flex;
+    flex-direction: column;
+    height: 450px;
+    margin-top: 10px;
+}
+
+.entry #content {
+    height: 200px;
+}
+
+.entry {
+    overflow: auto;
+    height: 400px;
+}
+.title,
+.date,
+.entry {
+    margin-bottom: 15px;
+}
+.title h3,
+.date h3,
+.view-entry h3 {
+    border-bottom: 1px solid rgb(179, 167, 167);
+    color: rgb(212, 169, 58);
+    margin-bottom: 10px;
+    padding-bottom: 2px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(133, 97, 7);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+.search-entry-title input:hover[type='text'] {
+    box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+.search-entry-title button {
+    background-color: rgb(9, 128, 161);
+    color: #fff;
+}
+.search-entry-title button:hover {
+    background-color: rgb(13, 89, 110);
+}
+
+input[type='text'],
+input[type='date'] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(133, 97, 7);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+input[type='submit'] {
+    background-color: #4caf50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 150px;
+}
+
+input[type='submit']:hover {
+    background-color: #45a049;
+}
+
+.trasparent-bg {
+    background: #212121;
+    opacity: 0.7;
+}
+main#user-details {
+    display: flex;
+    background-color: rgb(90, 87, 87);
+    opacity: 0.9;
+    width: 80%;
+    margin: 40px auto;
+}
+#user-details img {
+    border-radius: 20px;
+    border: 1px solid #fff;
+    height: 200px;
+}
+/* profile imgs */
+.user {
+    /* display: inline-block; */
+    margin: auto 0;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 16px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.user img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+a#user {
+    color: rgb(212, 169, 58);
+    font-weight: bolder;
+    font-family: helvetical;
+}
+/* profile imgs ends */
+
+/* top logo start */
+a.nav-logo {
+    padding: 0 25px;
+    font-size: 16px;
+    line-height: 30px;
+    border-radius: 25px;
+    display: flex;
+}
+
+.nav-log img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+/* top logo ends */
+
+/* =========================== Nav Start =========================== */
+nav {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+}
+.navcolor {
+    background: rgb(51, 49, 49);
+}
+nav > #logo {
+    font-size: 20px;
+    padding: 10px;
+    /* margin: auto; */
+    margin-left: 20px;
+    font-weight: bold;
+    min-width: 30px;
+    font-family: 'Trebuchet MS';
+}
+nav > #logo a {
+    color: #fff;
+}
+li {
+    list-style: none;
+}
+.menu ul {
+    display: flex;
+    list-style: none;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    height: 30px;
+}
+label {
+    color: rgb(212, 169, 58);
+    font-weight: bold;
+}
+a {
+    text-decoration: none;
+}
+h2 {
+    color: #ffe57f;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+}
+.menu ul li a {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 1px 25px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.menu ul li a:hover {
+    color: rgb(133, 97, 7);
+    padding: 1px 25px;
+}
+search-entry-title {
+    margin: auto;
+}
+.search-entry-title input[type='text'] {
+    height: 40px;
+    width: 300px;
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 17px;
+    color: blue;
+    margin-top: 11px;
+}
+.search-entry-title button {
+    height: 40px;
+    margin-top: 15px;
+    padding: 5px;
+}
+
+/* ============================== Nav Ends ==================== ==============*/
+
+/* ============================== Page banner start========================== */
+.banner-text {
+    display: flex;
+    padding: 8% 0;
+    margin: 100px auto;
+    width: 60%;
+    text-align: center;
+    flex-direction: column;
+}
+/*.banner-text h2{
+  color: #ffe57f;
+}*/
+.banner-text p {
+    font-size: 1.5em;
+    color: #fff;
+    font-family: 'Trebuchet MS';
+}
+.footer {
+    color: #ffe57f;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* margin-top: ; */
+    background-color: #212121;
+    height: 30px;
+    padding-top: 50px;
+}
+.push {
+    height: 50px;
+    margin-bottom: 30px;
+}
+/* ===================================== Page banner Ends ================================== */
+
+/* =========================  Button style Start ======================================= */
+button {
+    cursor: pointer;
+    font-size: 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+}
+.edit-btn {
+    background-color: rgb(194, 194, 194);
+    width: 100px;
+    border-radius: 6px;
+}
+.edit-btn:hover {
+    background-color: rgb(90, 87, 87);
+    border-radius: 10px;
+    color: #f1f1f1;
+}
+
+.delete-btn {
+    background-color: rgb(194, 194, 194);
+    width: 100px;
+    border-radius: 6px;
+}
+.delete-btn:hover {
+    background-color: rgb(90, 87, 87);
+    border-radius: 10px;
+    color: red;
+}
+
+.banner-text a {
+    width: 150px;
+    height: 40px;
+    margin: 10px auto;
+}
+.banner {
+    height: 100%;
+}
+.submit-btn {
+    width: 150px;
+    height: 40px;
+    margin-top: 40px;
+    background-color: rgb(123, 97, 40);
+    color: azure;
+    border-radius: 5px;
+}
+.submit-btn:hover {
+    background-color: rgb(22, 17, 4);
+    border-radius: 10px;
+}
+
+/* ++++++++++ Hexadecimal entities for the icons +++++++++++*/
+
+.add:before {
+    content: '\271A';
+}
+
+.edit:before {
+    content: '\270E';
+    color: purple;
+    padding: 2px;
+}
+
+.delete:before {
+    content: '\2718';
+    color: red;
+}
+
+.save:before {
+    content: '\2714';
+}
+
+.email:before {
+    content: '\2709';
+}
+
+/* =========================  Button style Start ======================================= */
+
+/* ===================== My Entry section start  ================================== */
+section {
+    width: 90%;
+    margin: 10px auto;
+    /* height: 108vh; */
+    min-height: 100%;
+    margin-bottom: 30px;
+    position: relative;
+}
+h2.heading {
+    text-align: center;
+    font-family: Helvetica;
+    color: rgb(51, 49, 49);
+}
+table {
+    margin: 40px auto;
+    color: black;
+    border: 1px solid rgb(199, 196, 196);
+    width: 90%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+}
+th:first-child {
+    border-radius: 6px 0 0 0;
+}
+th:last-child {
+    border-radius: 0 6px 0 0;
+}
+
+tr:nth-of-type(odd) {
+    background: rgb(199, 196, 196);
+    opacity: 0.9;
+}
+tr:nth-of-type(even) {
+    opacity: 0.8;
+}
+th {
+    background: rgb(51, 49, 49);
+    color: white;
+    font-weight: bold;
+    height: 60px;
+    text-transform: uppercase;
+}
+
+td,
+th {
+    padding: 10px;
+    text-align: left;
+    font-size: 16px;
+}
+
+.view-button {
+    background-color: rgb(19, 17, 17);
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #fff;
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.view-button:hover {
+    background-color: rgb(251, 251, 251);
+    color: rgb(51, 49, 49);
+}
+
+@media screen and (max-width: 1092px) {
+    .search-entry-title {
+        display: flex;
+        /* justify-content: space-between; */
+        /* width:200px; */
+        flex-wrap: no-wrap;
+    }
+}
+
+/* ===================== My Entry section Ends  ================================== */
+
+/* Media Quaries */
+@media screen and (max-width: 760px) {
+    body {
+        height: 100%;
+    }
+    nav {
+        width: 100%;
+        /* display: block; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .search-entry-title {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+    .search-entry-title button {
+        width: 100px;
+        align-self: center;
+    }
+    .search-entry-title input[type='text'] {
+        width: 100%;
+    }
+    main#user-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav > #logo {
+        font-size: 20px;
+    }
+    h2.heading {
+        font-size: 32px;
+    }
+    section {
+        margin-top: 10px;
+    }
+    .menu {
+        width: 100%;
+    }
+    .menu ul {
+        display: flex;
+        margin-top: 5px;
+        justify-content: center;
+        height: 50%;
+    }
+
+    .menu ul li {
+        background: rgb(51, 49, 49);
+        border-bottom: 1px solid #ffffff;
+        opacity: 0.9;
+        width: 100%;
+        z-index: 1;
+        text-align: center;
+        padding: 10px;
+    }
+    .menu ul li a {
+        margin: auto;
+        box-sizing: border-box;
+    }
+
+    /*my entries  */
+    table,
+    tbody,
+    th,
+    td,
+    tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    h2 {
+        font-size: 1.5em;
+    }
+    .banner-text p {
+        font-size: 1em;
+    }
+
+    .submit-btn {
+        width: 100px;
+        height: 30px;
+        margin: 40px auto;
+        font-size: 16px;
+    }
+}
+
+/*  */
