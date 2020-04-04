@@ -7,7 +7,6 @@ exports[`renders Signupnt without crashing 1`] = `
       id="logo"
     >
       <Link
-        replace={false}
         to="/login"
       >
         Login
@@ -28,13 +27,13 @@ exports[`renders Signupnt without crashing 1`] = `
         <p>
           Already have an Account ?
           <Link
-            replace={false}
             to="/login"
           >
             Sign in
           </Link>
         </p>
         <label
+          className="label"
           htmlFor="fullname"
         >
           Fullname
@@ -49,6 +48,7 @@ exports[`renders Signupnt without crashing 1`] = `
           value=""
         />
         <label
+          className="label"
           htmlFor="email"
         >
           Email
@@ -63,6 +63,7 @@ exports[`renders Signupnt without crashing 1`] = `
           type="email"
         />
         <label
+          className="label"
           htmlFor="username"
         >
           Username
@@ -79,6 +80,7 @@ exports[`renders Signupnt without crashing 1`] = `
           type="text"
         />
         <label
+          className="label"
           htmlFor="country"
         >
           Password

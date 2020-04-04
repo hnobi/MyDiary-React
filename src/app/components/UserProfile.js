@@ -46,7 +46,7 @@ class UserProfile extends Component {
                 <Link to="/add-entry">Add Entry</Link>
               </li>
               <li>
-                <Link to="entries.html">My Entries</Link>
+                <Link to="entries">My Entries</Link>
               </li>
               <li>
                 <Link to="/logout">Logout</Link>

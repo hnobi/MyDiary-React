@@ -2,7 +2,7 @@ logs
 *.log
 .DS_Store
 coverage
- dist
+dist
 npm-debug.log*
 
 node_modules

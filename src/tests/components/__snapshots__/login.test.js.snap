@@ -2,6 +2,17 @@
 
 exports[`renders LoginForm component without crashing 1`] = `
 <div>
+  <nav>
+    <div
+      id="logo"
+    >
+      <Link
+        to="/signup"
+      >
+        Login
+      </Link>
+    </div>
+  </nav>
   <main>
     <div
       id="after-click"
@@ -21,6 +32,7 @@ exports[`renders LoginForm component without crashing 1`] = `
         onSubmit={[Function]}
       >
         <label
+          className="label"
           htmlFor="username"
         >
           Username
@@ -35,6 +47,7 @@ exports[`renders LoginForm component without crashing 1`] = `
           value=""
         />
         <label
+          className="label"
           htmlFor="password"
         >
           Password
@@ -58,16 +71,12 @@ exports[`renders LoginForm component without crashing 1`] = `
       <p>
         dont have an Account ? 
         <Link
-          replace={false}
           to="/signup"
         >
            Sign up
         </Link>
          
       </p>
-      <div
-        className="push"
-      />
     </div>
     <p
       className="footer"
