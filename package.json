@@ -76,7 +76,7 @@
     "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.4.3",
     "moxios": "^0.4.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
     "sass-loader": "^7.3.1",
     "style-loader": "^0.21.0",
